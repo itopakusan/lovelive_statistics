@@ -20,8 +20,8 @@ plt.style.use('ggplot')
 fig = plt.figure(figsize=(8.0, 6.0))
 ax = fig.add_subplot(111)
 
-dates = mdates.MonthLocator(interval=6)
-dates_fmt = mdates.DateFormatter('%Y/%m')
+dates = mdates.YearLocator()
+dates_fmt = mdates.DateFormatter('%Y')
 
 ax.xaxis.set_major_locator(dates)
 ax.xaxis.set_major_formatter(dates_fmt)
