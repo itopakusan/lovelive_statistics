@@ -25,4 +25,5 @@ ax = sns.boxenplot(y=df['Name'], x=df['Duration'],
 
 plt.ylabel(None)
 plt.xlabel("各回放送時間（時間）")
-plt.savefig("300_dpi_boxenplot.png", format="png", dpi=300)
+plt.savefig("boxenplot.svg", format="svg")
+plt.savefig("boxenplot.png", format="png", dpi=300)
