@@ -41,6 +41,24 @@ for channel in channels:
 
 ax.legend()
 
+# Export summary table
+
+
+df_summary = df.pivot_table(
+    index='Date', columns='Channel', values='Duration', aggfunc=sum)
+
+for channel in channels:
+
+    df_param = ch.loc[(ch['Channel'] == channel)]
+    label = df_param.iat[0, 1]
+    df_summary.rename(columns={channel: label}, inplace=True)
+
+df_summary = df_summary.resample('M').sum()
+df_summary_cumsum = df_summary.cumsum().round(3)
+df_summary.to_csv('monthly_sum.csv')
+df_summary_cumsum.to_csv('cumulative_sum.csv')
+
+
 plt.title("累計放送時間")
 plt.xlabel("放送日時")
 plt.ylabel("累積放送時間 (時間)")
